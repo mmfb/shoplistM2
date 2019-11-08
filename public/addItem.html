@@ -6,36 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="javascripts/addItem.js"></script>
 </head>
 <body>
-    <form action="/api/shoplist/1/items"
-    method="post">
-        <label for="item">Novo item</label>
-        <input name="item" type="text"><br>
-        <input type="button" value="Adicionar item" onclick="saveItem()">
-        <p id="done"> </p>
-    </form>
+    <label for="item">Novo item</label>
+    <input name="item" type="text"><br>
+    <input type="button" value="Adicionar item" onclick="saveItem()">
+    <p id="done"> </p>
+   
 </body>
-<script>
-    // in the future it will be chosen by the user
-var shopListId = 1;
-function saveItem() {
-    var item = document.getElementsByName("item")[0].value;
-    $.ajax({
-        url: "/api/shoplist/"+shopListId+"/items/",
-        method: "post",
-        data: {
-            item: item
-        },
-        success: function(res,status) {
-            document.getElementById("done").innerHTML =
-             JSON.stringify(res);
-        },
-        error: function(err) {
-
-        }
-    });
-};
-</script>
-
 </html>
